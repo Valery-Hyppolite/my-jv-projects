@@ -1,7 +1,8 @@
 const express = require('express');
 const https = require('https');
 const { format } = require('path');
-const bodyparser = require('body-parser')
+const bodyparser = require('body-parser');
+config = require('./config');
 
 const app = express();
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -17,8 +18,8 @@ app.post('/', function (req, res) {
     const city = req.body.cityName;
     const country = req.body.countryName;
     const unit = 'metric';
-    const apiKey = config.API_KEY;
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&appid=" + apiKey + "&units=" + unit;
+    let key = config.API_KEY;
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&appid=" + key + "&units=" + unit;
     // const url = "https://api.openweathermap.org/data/2.5/weather?q=sunrise,us&appid=e9363e223b81bbf411592eff1d19641b"
 
 
